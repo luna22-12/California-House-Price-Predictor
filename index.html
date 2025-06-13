@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>California House Price Predictor</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f0f4f8;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        .container {
+            background-color: #ffffff;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 0 15px rgba(0,0,0,0.1);
+            width: 500px;
+        }
+        h2 {
+            text-align: center;
+            color: #333;
+        }
+        label {
+            display: block;
+            margin-top: 15px;
+            color: #444;
+        }
+        input[type="text"] {
+            width: 100%;
+            padding: 8px;
+            margin-top: 5px;
+            border: 1px solid #ccc;
+            border-radius: 6px;
+        }
+        input[type="submit"] {
+            width: 100%;
+            margin-top: 25px;
+            padding: 10px;
+            background-color: #007bff;
+            border: none;
+            color: white;
+            font-size: 16px;
+            border-radius: 6px;
+            cursor: pointer;
+        }
+        input[type="submit"]:hover {
+            background-color: #0056b3;
+        }
+        .result {
+            margin-top: 20px;
+            font-weight: bold;
+            color: green;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>California House Price Predictor</h2>
+        <form action="/predict" method="post">
+            <label for="MedInc">Median Income:</label>
+            <input type="text" name="MedInc" required>
+
+            <label for="HouseAge">House Age:</label>
+            <input type="text" name="HouseAge" required>
+
+            <label for="AveRooms">Average Rooms:</label>
+            <input type="text" name="AveRooms" required>
+
+            <label for="AveBedrms">Average Bedrooms:</label>
+            <input type="text" name="AveBedrms" required>
+
+            <label for="Population">Population:</label>
+            <input type="text" name="Population" required>
+
+            <label for="AveOccup">Average Occupancy:</label>
+            <input type="text" name="AveOccup" required>
+
+            <label for="Latitude">Latitude:</label>
+            <input type="text" name="Latitude" required>
+
+            <label for="Longitude">Longitude:</label>
+            <input type="text" name="Longitude" required>
+
+            <input type="submit" value="Predict">
+        </form>
+
+        {% if prediction %}
+        <div class="result">
+            Predicted House Price: {{ prediction }}
+        </div>
+        {% endif %}
+    </div>
+</body>
+</html>
